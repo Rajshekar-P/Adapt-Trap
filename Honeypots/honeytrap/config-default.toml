@@ -1,0 +1,14 @@
+Honeytrap starting (d1vsh6b8m26g00f4a410)...
+Version: DEVELOPMENT.GOGET (DEVELOPMENT.)
+[36m17:21:29.220 honeytrap/server ▶ DEBU 002 Using datadir: /data[0m
+[36m17:21:29.220 services ▶ DEBU 003 Could not load private-key, generating one.[0m
+17:21:29.432 honeytrap/server ▶ INFO 004 Configured service ssh-simulator (ssh-simulator)[0m
+17:21:29.432 honeytrap/server ▶ INFO 005 Configured service telnet (telnet)[0m
+17:21:29.432 honeytrap/server ▶ INFO 006 Configured port tcp/:8022[0m
+17:21:29.432 honeytrap/server ▶ INFO 007 Configured port tcp/:8023[0m
+17:21:29.432 honeytrap/server ▶ INFO 008 Configured port tcp/:5900[0m
+[33m17:21:29.432 honeytrap/server ▶ WARN 009 Unrecognized keys in configuration: [service.telnet.image service.telnet.server-name][0m
+17:21:29.433 listeners/socket ▶ INFO 00a Listener started: tcp/:8022[0m
+17:21:29.433 listeners/socket ▶ INFO 00b Listener started: tcp/:8023[0m
+17:21:29.433 listeners/socket ▶ INFO 00c Listener started: tcp/:5900[0m
+Honeytrap stopped.

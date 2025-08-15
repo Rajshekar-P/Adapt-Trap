@@ -1,0 +1,15 @@
+version: '3'
+services:
+  honeytrap:
+    image: honeytrap/honeytrap
+    ports:
+      - "21:21"
+      - "22:22"
+      - "23:23"
+      - "80:80"
+      - "3306:3306"
+    volumes:
+      - ./config.toml:/config/config.toml
+      - ./honeytrap-logs:/var/log/honeytrap
+      - ./logs:/home/honeytrap/honeytrap/honeytrap-logs
+    command: ["--config", "/config/config.toml"]
