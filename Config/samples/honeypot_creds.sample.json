@@ -1,0 +1,7 @@
+{
+  "cowrie":     {"host": "<IP>", "user": "<USER>", "pass": "<PASS>", "port": 22},
+  "honeypy":    {"host": "<IP>", "user": "<USER>", "pass": "<PASS>", "port": 22},
+  "honeytrap":  {"host": "<IP>", "user": "<USER>", "pass": "<PASS>", "port": 22},
+  "conpot":     {"host": "<IP>", "user": "<USER>", "pass": "<PASS>", "port": 22},
+  "nodepot":    {"host": "<IP>", "user": "<USER>", "pass": "<PASS>", "port": 22}
+}

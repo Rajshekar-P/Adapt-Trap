@@ -1,0 +1,42 @@
+# Python / env
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+*.egg-info/
+.venv/
+venv/
+env/
+*/venv/
+*/.venv/
+
+# Notebooks
+*.ipynb_checkpoints/
+
+# Editors/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs / outputs / large runtime stuff
+logs/
+out/
+downloads/
+*.log
+ppo_logs/
+events.out.tfevents.*
+
+# Data (keep only samples)
+datasets/
+Data/raw/
+Data/interim/
+Data/external/
+
+# Secrets (do not commit)
+.env
+Config/live_do_not_commit/
+
+# Random local files
+Code backup.zip
+session_*.json
