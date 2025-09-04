@@ -1,0 +1,7 @@
+mongo_uri: ${MONGO_URI}
+db_name: ${DB_NAME}
+results_collection: ${RESULTS_COLL}
+cape:
+  url: ${CAPE_API_URL}
+  token: ${CAPE_API_TOKEN}
+poll_secs: ${POLL_SECS}

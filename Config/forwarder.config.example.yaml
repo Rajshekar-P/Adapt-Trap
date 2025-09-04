@@ -1,0 +1,11 @@
+mongo_uri: ${MONGO_URI}
+db_name: ${DB_NAME}
+logs_collection: ${LOGS_COLL}
+cape:
+  url: ${CAPE_API_URL}   # CAPEv2 base must include /apiv2
+  token: ${CAPE_API_TOKEN}
+  batch: ${BATCH}
+  poll_secs: ${POLL_SECS}
+dedup:
+  enable: true
+  field: sha256
