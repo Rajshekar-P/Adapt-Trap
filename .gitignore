@@ -47,3 +47,12 @@ Honeypots/nodepot-lite/uploads/
 Honeypots/nodepot-lite/logs/
 Honeypots/nodepot-lite/*.log
 Honeypots/nodepot-lite/.env
+
+# CAPE (keep repo lean & safe)
+CAPE/storage/
+CAPE/log/
+CAPE/tmp/
+CAPE/**/*.pcap
+CAPE/**/*.sqlite
+CAPE/**/*.log
+CAPE/**/.venv/

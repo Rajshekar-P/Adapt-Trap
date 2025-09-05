@@ -1,0 +1,12 @@
+[physical]
+machines = win10x64
+
+[win10x64]
+label    = Windows 10 Analysis VM
+platform = windows
+ip       = 192.168.186.150    ; TODO: set your guest IP here
+interface = nat               ; just a label for your own reference
+tags     = win10
+
+[fog]
+enabled  = no

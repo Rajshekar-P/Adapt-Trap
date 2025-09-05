@@ -1,0 +1,18 @@
+[physical]
+machines = win10x64
+
+[win10x64]
+label     = Windows 10 Analysis VM
+platform  = windows
+arch      = x64                 ; REQUIRED: x86 or x64
+ip        = 192.168.186.141     ; TODO: set your guest IP
+interface = nat
+tags      = win10
+
+[fog]
+enabled   = no
+hostname  =
+apikey    =
+token     =
+user      =
+password  =

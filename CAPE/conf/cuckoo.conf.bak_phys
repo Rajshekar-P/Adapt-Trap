@@ -1,0 +1,69 @@
+[cuckoo]
+machinery = vmware
+ignore_signals = yes
+categories = static, pcap, url, file
+delete_original = off
+delete_archive = on
+delete_bin_copy = off
+scaling_semaphore = off
+scaling_semaphore_update_timer = 10
+task_timeout = off
+task_pending_timeout = 0
+task_timeout_scan_interval = 30
+memory_dump = off
+terminate_processes = off
+reschedule = off
+fail_unserviceable = on
+max_analysis_count = 0
+max_machines_count = 10
+max_vmstartup_count = 5
+allow_static = no
+freespace = 50000
+freespace_processing = 15000
+tmppath = /tmp
+daydelta = 0
+rooter = /tmp/cuckoo-rooter
+periodic_log = off
+max_len = 196
+sanitize_len = 32
+sanitize_to_len = 24
+
+[resultserver]
+ip = 0.0.0.0
+port = 2042
+force_port = yes
+pool_size = 0
+store_csvs = off
+upload_max_size = 100000000
+do_upload_max_size = no
+
+[processing]
+analysis_size_limit = 200000000
+resolve_dns = on
+reverse_dns = off
+sort_pcap = on
+
+[database]
+connection = postgresql://cape:cape123@localhost/cape_db
+psql_ssl_mode = disable
+timeout = 
+log_statements = off
+
+[timeouts]
+default = 200
+critical = 60
+vm_state = 300
+
+[tmpfs]
+enabled = off
+path = /mnt/tmpfs/
+freespace = 2000
+
+[cleaner]
+enabled = no
+binaries = 0
+tmp = 0
+analysis = 0
+mongo = no
+unused_files_in_mongodb = no
+
