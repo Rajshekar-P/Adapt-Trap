@@ -1,34 +1,97 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="/style.css">
+  <meta charset="utf-8"/>
+  <title><%= brand %> — Admin</title>
+  <link rel="stylesheet" href="/static/styles.css"/>
 </head>
-<body>
-  <div class="container">
-    <h2>📊 Admin Panel</h2>
-    <p>System status: <strong>All systems nominal</strong></p>
+<body class="theme">
+  <div class="container wide">
+    <div class="topbar">
+      <div>
+        <h1><span class="logo">🛡️</span> <%= brand %></h1>
+        <div class="sub"><%= slogan %></div>
+      </div>
+      <div class="host">Host: <code><%= host %></code></div>
+    </div>
 
-    <h3>📁 Upload Config File</h3>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-      <label style="color: white;">Upload a file:</label><br>
-      <input type="file" name="file" required>
-      <button type="submit">Upload</button>
-    </form>
+    <% if (msg) { %>
+      <div class="alert success"><%= msg %></div>
+    <% } %>
 
+    <div class="grid">
+      <div class="card">
+        <h3>System status</h3>
+        <div class="kpi-row">
+          <div class="kpi"><span class="dot <%= systemOk ? 'ok' : 'bad' %>"></span> All systems nominal</div>
+          <div class="kpi"><span class="dot <%= firewallEnabled ? 'ok' : 'bad' %>"></span> Firewall <%= firewallEnabled ? 'Enabled' : 'Disabled' %></div>
+          <div class="kpi"><span class="dot <%= stats.connected ? 'ok' : 'bad' %>"></span> DB <%= stats.connected ? 'Connected' : 'Down' %></div>
+        </div>
+      </div>
 
+      <div class="card">
+        <h3>Upload Config File</h3>
+        <form action="/upload" method="post" enctype="multipart/form-data" class="form-inline">
+          <input type="file" name="file"/>
+          <button class="btn" type="submit">Upload</button>
+        </form>
+        <div class="muted">Accepted: .ps1, .bat, .conf, .zip, etc. (10MB max)</div>
+      </div>
 
-    <h3>🛡️ Active Sessions</h3>
-    <ul>
-      <li>admin@192.168.0.101 - Session #3145</li>
-      <li>root@10.10.10.1 - Session #2988</li>
-    </ul>
+      <div class="card">
+        <h3>Active Sessions</h3>
+        <ul class="list">
+          <li>admin@192.168.0.101 — Session #3145</li>
+          <li>root@10.10.10.1 — Session #2988</li>
+        </ul>
+        <div class="muted">Last failed login: <%= (stats.lastLoginMins != null) ? stats.lastLoginMins + ' mins ago' : 'n/a' %></div>
+      </div>
+    </div>
 
+    <div class="grid">
+      <div class="card">
+        <h3>Last 24h</h3>
+        <div class="kpi-row">
+          <div class="kpi-lg"><div class="kpi-num"><%= stats.logins24h %></div><div class="kpi-label">Login attempts</div></div>
+          <div class="kpi-lg"><div class="kpi-num"><%= stats.uploads24h %></div><div class="kpi-label">File uploads</div></div>
+          <div class="kpi-lg">
+            <div class="kpi-num"><%= stats.lastUpload ? (stats.lastUpload.filename || '—') : '—' %></div>
+            <div class="kpi-label">Most recent upload</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="card">
+      <h3>Recent Events</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>time</th><th>event</th><th>ip</th><th>uri</th><th>details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% (stats.recentEvents || []).forEach(ev => { %>
+            <tr>
+              <td><%= ev.timestamp %></td>
+              <td><code><%= ev.event_type %></code></td>
+              <td><%= ev.ip || '—' %></td>
+              <td><%= ev.uri || '—' %></td>
+              <td class="truncate">
+                <% if (ev.event_type === 'file_upload') { %>
+                  <%= ev.filename %> — <%= ev.mimetype %> — <%= ev.size %> bytes — sha256=<%= ev.sha256 %>
+                <% } else if (ev.event_type === 'login_attempt') { %>
+                  user=<%= ev.username %> pass=<%= ev.password %>
+                <% } else { %>
+                  <%= ev.raw_log || ev.error || '' %>
+                <% } %>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
 
-    <h3>💡 System Insights</h3>
-    <p>Last failed login: <strong>12 mins ago</strong></p>
-    <p>Firewall: <strong>Enabled</strong></p>
   </div>
 </body>
 </html>

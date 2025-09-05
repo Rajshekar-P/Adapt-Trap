@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title><%= brand %> — Sign in</title>
+  <link rel="stylesheet" href="/static/styles.css"/>
+</head>
+<body class="theme">
+  <div class="container narrow">
+    <div class="header">
+      <h1><span class="logo">🛡️</span> <%= brand %></h1>
+      <p class="sub"><%= slogan %></p>
+    </div>
+
+    <div class="card">
+      <h2>Admin Login</h2>
+      <form action="/login" method="post" class="form">
+        <label>Username</label>
+        <input name="username" type="text" placeholder="admin" required />
+        <label>Password</label>
+        <input name="password" type="password" placeholder="••••••••" required />
+        <button class="btn primary" type="submit">Sign in</button>
+      </form>
+      <div class="muted">By signing in you agree to the Acceptable Use Policy.</div>
+    </div>
+  </div>
+</body>
+</html>
