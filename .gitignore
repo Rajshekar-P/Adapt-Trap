@@ -40,3 +40,10 @@ Config/live_do_not_commit/
 # Random local files
 Code backup.zip
 session_*.json
+
+# nodepot-lite runtime artifacts
+Honeypots/nodepot-lite/node_modules/
+Honeypots/nodepot-lite/uploads/
+Honeypots/nodepot-lite/logs/
+Honeypots/nodepot-lite/*.log
+Honeypots/nodepot-lite/.env
